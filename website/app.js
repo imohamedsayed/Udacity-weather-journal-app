@@ -2,9 +2,9 @@
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
+let newDate = d.getMonth() + 1 + "." + d.getDate() + "." + d.getFullYear();
 
-let apiKey = "&appid=3dd6822b4a27c10c36dc730057180df8&units=imperial";
+const apiKey = "3dd6822b4a27c10c36dc730057180df8&units=imperial";
 
 const generateButton = document.getElementById("generate");
 const zipCode = document.getElementById("zip");
@@ -59,7 +59,10 @@ generateButton.addEventListener("click", () => {
 async function getLocalWeatherData(zipCode) {
   return await (
     await fetch(
-      "http://api.openweathermap.org/data/2.5/forecast?zip=" + zipCode + apiKey
+      "http://api.openweathermap.org/data/2.5/forecast?zip=" +
+        zipCode +
+        "&appid=" +
+        apiKey
     )
   ).json();
 }
